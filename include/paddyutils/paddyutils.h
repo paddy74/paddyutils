@@ -7,3 +7,4 @@
 #include "functions/getMatchingItem.h"
 #include "functions/getRepeatMap.h"
 #include "functions/getTimesRepeated.h"
+#include "functions/strSplit.h"
