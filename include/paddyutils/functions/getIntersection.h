@@ -71,4 +71,31 @@ std::vector<T> getIntersection(std::vector<T> const & a, std::vector<T> const & 
     return interLst;
 }
 
+
+/**
+ * @brief Get the intersecting keys of two maps whose values are of `mapA`.
+ *
+ * @tparam KEY_T
+ * @tparam VALUE_T
+ * @param a The maps whose values are kept.
+ * @param b
+ * @return std::unordered_map<KEY_T, VALUE_T>
+ */
+template<typename KEY_T, typename VALUE_T>
+std::unordered_map<KEY_T, VALUE_T> getKeyIntersection(
+    std::unordered_map<KEY_T, VALUE_T> const & a,
+    std::unordered_map<KEY_T, VALUE_T> const & b
+)
+{
+    std::unordered_map<KEY_T, VALUE_T> interMap;
+
+    for (auto const & pair : a)
+    {
+        if (b.find(pair.first) != b.end())
+            result.insert(pair);
+    }
+
+    return interMap;
+}
+
 }
