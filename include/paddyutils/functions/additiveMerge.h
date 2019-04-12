@@ -20,8 +20,8 @@ void additiveMergeInplace(
     std::unordered_map<KEY_T, VALUE_T> const & b
 )
 {
-    for (auto const & it = b.begin(); it != b.end(); ++it)
-        a[it->first] += it->second;
+    for (auto const & [key, value] : b)
+        a[key] += value;
 }
 
 
