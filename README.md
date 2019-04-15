@@ -25,6 +25,7 @@ The `paddyutils.h` file includes all of this project functions and can be includ
 Each function and its accompanying overloads exist in their own files.
 
 - additiveMerge
+- caseFold
 - doesContain
 - findMaxValuePair
 - getIntersection
