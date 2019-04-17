@@ -17,7 +17,7 @@ namespace paddyutils
 template<typename T>
 std::set<T> getIntersection(std::set<T> const & a, std::set<T> const & b)
 {
-    std::set<T> interLst();
+    std::set<T> interLst;
 
     std::set_intersection(
         a.begin(), a.end(),
@@ -39,7 +39,7 @@ std::set<T> getIntersection(std::set<T> const & a, std::set<T> const & b)
 template<typename T>
 std::list<T> getIntersection(std::list<T> const & a, std::list<T> const & b)
 {
-    std::list<T> interLst();
+    std::list<T> interLst;
 
     std::set_intersection(
         a.begin(), a.end(),
@@ -61,7 +61,7 @@ std::list<T> getIntersection(std::list<T> const & a, std::list<T> const & b)
 template<typename T>
 std::vector<T> getIntersection(std::vector<T> const & a, std::vector<T> const & b)
 {
-    std::vector<T> interLst();
+    std::vector<T> interLst;
 
     std::set_intersection(
         a.begin(), a.end(),
