@@ -7,6 +7,6 @@
 #include "functions/getIntersection.h"
 #include "functions/getMatchingItem.h"
 #include "functions/getRepeatMap.h"
-#include "functions/getSymDiff"
+#include "functions/getSymDiff.h"
 #include "functions/getTimesRepeated.h"
 #include "functions/strSplit.h"
