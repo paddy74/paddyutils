@@ -1,6 +1,7 @@
 #pragma once
 
 #include "base/stdPaddyUtils.h"
+#include <unordered_set>
 
 
 namespace paddyutils
@@ -73,6 +74,45 @@ std::vector<T> getIntersection(std::vector<T> const & a, std::vector<T> const & 
 
 
 /**
+ * @brief Get the intersection of two `unordered_set` instances.
+ *
+ * @tparam KEY_T
+ * @tparam VALUE_T
+ * @param a The maps whose values are kept.
+ * @param b
+ * @return std::unordered_map<KEY_T, VALUE_T>
+ */
+template<typename T>
+std::unordered_set<T> getIntersection(
+    std::unordered_set<T> const & a,
+    std::unordered_set<T> const & b
+)
+{
+    std::unordered_set<T> interSet;
+
+    // Loop over smaller set to improve speed
+    if (a.size() <= b.size())
+    {
+        for (auto const & item : a)
+        {
+            if (b.find(item) != b.end())
+                interSet.insert(item);
+        }
+    }
+    else  // a.size() > b.size()
+    {
+        for (auto const & item : b)
+        {
+            if (a.find(item) != a.end())
+                interSet.insert(item);
+        }
+    }
+
+    return interSet;
+}
+
+
+/**
  * @brief Get the intersecting keys of two maps whose values are of `mapA`.
  *
  * @tparam KEY_T
@@ -89,10 +129,23 @@ std::unordered_map<KEY_T, VALUE_T> getKeyIntersection(
 {
     std::unordered_map<KEY_T, VALUE_T> interMap;
 
-    for (auto const & pair : a)
+    // Loop over smaller map to improve speed
+    if (a.size() <= b.size())
     {
-        if (b.find(pair.first) != b.end())
-            result.insert(pair);
+        for (auto const & pair : a)
+        {
+            if (b.find(pair.first) != b.end())
+                interMap.insert(pair);
+        }
+    }
+    else  // a.size > b.size()
+    {
+        for (auto const & pair : b)
+        {
+            auto const & apairItr = a.find(pair.first);
+            if (apairItr != a.end())
+                interMap.insert(*apairItr);
+        }
     }
 
     return interMap;
