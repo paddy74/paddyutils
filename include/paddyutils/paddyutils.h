@@ -10,3 +10,4 @@
 #include "functions/getSymDiff.h"
 #include "functions/getTimesRepeated.h"
 #include "functions/strSplit.h"
+#include "functions/toFrequencyMap.h"
