@@ -1,11 +1,9 @@
 #pragma once
 
-#include "base/stdPaddyUtils.h"
-
+#include <cstdlib>
 
 namespace paddyutils
 {
-
 /**
  * @brief Get the number of times an item repeats in a set
  *
@@ -15,20 +13,19 @@ namespace paddyutils
  * @param value
  * @return std::size_t
  */
-template<typename ITR_T, typename VALUE_T>
-std::size_t getTimesRepeated(std::set<ITR_T> const & theItr, VALUE_T const & value)
+template <typename ITR_T, typename VALUE_T>
+std::size_t getTimesRepeated(
+    std::set<ITR_T> const & theItr, VALUE_T const & value)
 {
     std::size_t n = 0;
 
     for (auto const & item : theItr)
     {
-        if (item == value)
-            n++;
+        if (item == value) n++;
     }
 
     return n;
 }
-
 
 /**
  * @brief Get the number of times an item repeats in a list
@@ -39,20 +36,19 @@ std::size_t getTimesRepeated(std::set<ITR_T> const & theItr, VALUE_T const & val
  * @param value
  * @return std::size_t
  */
-template<typename ITR_T, typename VALUE_T>
-std::size_t getTimesRepeated(std::list<ITR_T> const & theItr, VALUE_T const & value)
+template <typename ITR_T, typename VALUE_T>
+std::size_t getTimesRepeated(
+    std::list<ITR_T> const & theItr, VALUE_T const & value)
 {
     std::size_t n = 0;
 
     for (auto const & item : theItr)
     {
-        if (item == value)
-            n++;
+        if (item == value) n++;
     }
 
     return n;
 }
-
 
 /**
  * @brief Get the number of times an item repeats in a vector
@@ -63,20 +59,20 @@ std::size_t getTimesRepeated(std::list<ITR_T> const & theItr, VALUE_T const & va
  * @param value
  * @return std::size_t
  */
-template<typename ITR_T, typename VALUE_T>
-std::size_t getTimesRepeated(std::vector<ITR_T> const & theItr, VALUE_T const & value)
+template <typename ITR_T, typename VALUE_T>
+std::size_t getTimesRepeated(
+    std::vector<ITR_T> const & theItr, VALUE_T const & value)
 {
     std::size_t n = 0;
 
     for (auto const & item : theItr)
     {
-        if (item == value)
-            n++;
+        if (item == value) n++;
     }
 
     return n;
 }
 
-//https://stackoverflow.com/questions/9683488/repeated-elements-in-a-stdvector
+// https://stackoverflow.com/questions/9683488/repeated-elements-in-a-stdvector
 
-}
+}  // namespace paddyutils

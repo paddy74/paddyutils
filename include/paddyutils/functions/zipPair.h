@@ -1,8 +1,10 @@
+#pragma once
+
+#include <utility>
 #include <vector>
 
 namespace paddyutils
 {
-
 /**
  * @brief Fill a zipped vector with pairs consiting of the corresponding
  *  elements of a and b. The vectors should have equal length.
@@ -15,7 +17,7 @@ namespace paddyutils
  */
 template <typename A, typename B>
 std::vector<std::pair<A, B>> zipPair(
-    std::vector<A> const &a, std::vector<B> const &b)
+    std::vector<A> const & a, std::vector<B> const & b)
 {
     // if (a.size() != b.size())
     //    throw std::exception("Zipped vectors must be the same size.");
@@ -39,7 +41,7 @@ std::vector<std::pair<A, B>> zipPair(
  */
 template <typename A, typename B>
 std::pair<std::vector<A>, std::vector<B>> unzipPair(
-    std::vector<std::pair<A, B>> const &zipped)
+    std::vector<std::pair<A, B>> const & zipped)
 {
     std::vector<A> a;
     std::vector<B> b;
@@ -55,4 +57,4 @@ std::pair<std::vector<A>, std::vector<B>> unzipPair(
     return std::make_pair(a, b);
 }
 
-} // namespace paddyutils
+}  // namespace paddyutils

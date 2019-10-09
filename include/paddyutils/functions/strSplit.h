@@ -1,12 +1,10 @@
 #pragma once
 
-#include <vector>
 #include <regex>
-
+#include <vector>
 
 namespace paddyutils
 {
-
 /**
  * @brief Replace all instances of the given substring with a new substring.
  *
@@ -17,8 +15,7 @@ namespace paddyutils
  */
 void replaceSubstr(
     std::string & str, std::string const & subString,
-    std::string const & newSubString
-)
+    std::string const & newSubString)
 {
     std::regex pattern(subString);
     std::regex_replace(str, pattern, newSubString);
@@ -32,8 +29,9 @@ void replaceSubstr(
  * @return std::string
  */
 void removeSubstr(std::string & str, std::string const & subString)
-{ replaceSubstr(str, subString, ""); }
-
+{
+    replaceSubstr(str, subString, "");
+}
 
 /**
  * @brief Split a string on a character delimiter.
@@ -54,7 +52,7 @@ std::vector<std::string> strSplit(std::string const & str, char const & delim)
     while ((std::string::npos != pos || std::string::npos != lastPos))
     {
         // Found token, add to the token vector
-        tokens.push_back(str.substr(lastPos, pos-lastPos));
+        tokens.push_back(str.substr(lastPos, pos - lastPos));
         // Skip delimiters
         lastPos = str.find_first_not_of(delim, pos);
         // Find next non-delimiter
@@ -64,9 +62,35 @@ std::vector<std::string> strSplit(std::string const & str, char const & delim)
     return tokens;
 }
 
+/**
+ * @brief Split a string on a std::string delimiter.
+ *
+ * @param str
+ * @param delim
+ * @return std::vector<std::string>
+ */
+std::vector<std::string> strSplit(
+    std::string const & str, std::string const & delim)
+{
+    std::vector<std::string> tokens;
 
-// TODO: Split on string delim
+    // Skip delimiters at the beginning
+    std::string::size_type lastPos = str.find_first_not_of(delim, 0);
+    // Find first non-delimiter
+    std::string::size_type pos = str.find_first_of(delim, lastPos);
 
+    while ((std::string::npos != pos || std::string::npos != lastPos))
+    {
+        // Found token, add to the token vector
+        tokens.push_back(str.substr(lastPos, pos - lastPos));
+        // Skip delimiters
+        lastPos = str.find_first_not_of(delim, pos);
+        // Find next non-delimiter
+        pos = str.find_first_of(delim, lastPos);
+    }
+
+    return tokens;
+}
 
 /**
  * @brief Split a string on spaces
@@ -75,6 +99,8 @@ std::vector<std::string> strSplit(std::string const & str, char const & delim)
  * @return std::vector<std::string>
  */
 std::vector<std::string> strSplit(std::string const & str)
-{ return strSplit(str, ' '); }
-
+{
+    return strSplit(str, ' ');
 }
+
+}  // namespace paddyutils

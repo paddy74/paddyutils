@@ -2,11 +2,9 @@
 
 #include <unordered_map>
 
-
 namespace paddyutils
 {
-
-template<typename ITERABLE_T, typename T>
+template <typename ITERABLE_T, typename T>
 std::unordered_map<T, std::size_t> toFrequencyMap(ITERABLE_T iterable)
 {
     std::unordered_map<T, std::size_t> freqMap;
@@ -21,4 +19,4 @@ std::unordered_map<T, std::size_t> toFrequencyMap(ITERABLE_T iterable)
     return freqMap;
 }
 
-}
+}  // namespace paddyutils

@@ -1,23 +1,20 @@
 #pragma once
 
-#include "base/stdPaddyUtils.h"
-
-
 namespace paddyutils
 {
-
 /**
- * @brief Get a map indicating repeating objects (key) and times repeated (value)
+ * @brief Get a map indicating repeating objects (key) and times repeated
+ * (value)
  *
  * @tparam ITR_T
  * @param theItr
  * @return std::size_t
  */
-template<typename ITR_T, typename KEY_T>
+template <typename ITR_T, typename KEY_T>
 std::size_t getRepeatMap(std::vector<ITR_T> const & theItr)
 {
     // Hash function for the hash table
-    auto h = [](const std::string& s) {
+    auto h = [](const std::string & s) {
         return std::hash<std::string>()(*s);
     };
 
@@ -32,10 +29,9 @@ std::size_t getRepeatMap(std::vector<ITR_T> const & theItr)
     std::unordered_map<const std::string*, std::size_t, decltype(eq) > m(theItr.size()), h, eq);
 
     // Count occurences
-    for (auto i = theItr.cbegin(); i != theItr.cend(); ++i)
-        ++m[&(*i)];
+    for (auto i = theItr.cbegin(); i != theItr.cend(); ++i) ++m[&(*i)];
 
     return m;
 }
 
-}
+}  // namespace paddyutils

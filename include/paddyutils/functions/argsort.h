@@ -1,12 +1,11 @@
 #pragma once
 
-#include <numeric> // std::iota
+#include <algorithm>  // std::algorithm
+#include <numeric>    // std::iota
 #include <vector>
-#include <algorithm> // std::algorithm
 
 namespace paddyutils
 {
-
 /**
  * @brief Get the sorted old indexes of a vector.
  *
@@ -15,7 +14,7 @@ namespace paddyutils
  * @return std::vector<std::size_t>
  */
 template <typename T>
-std::vector<std::size_t> argsort(std::vector<T> const &vect)
+std::vector<std::size_t> argsort(std::vector<T> const & vect)
 {
     // Initialize original index locations
     std::vector<std::size_t> idxVect(vect.size());
@@ -56,15 +55,15 @@ std::vector<std::size_t> argsort(
     std::sort(
         pv.begin(), pv.end(),
         [&comp](
-            std::pair<std::size_t, RAIter> const &a,
-            std::pair<std::size_t, RAIter> const &b) -> bool {
+            std::pair<std::size_t, RAIter> const & a,
+            std::pair<std::size_t, RAIter> const & b) -> bool {
             return comp(*a.second, *b.second);
         });
 
     std::vector<std::size_t> idxVector(pv.size());
     std::transform(
         pv.begin(), pv.end(), idxVector.begin(),
-        [](std::pair<std::size_t, RAIter> const &a) -> std::size_t {
+        [](std::pair<std::size_t, RAIter> const & a) -> std::size_t {
             return a.first;
         });
 
@@ -80,18 +79,17 @@ std::vector<std::size_t> argsort(
  */
 template <typename T>
 void orderByIndex(
-    std::vector<T> &orderable, std::vector<std::size_t> const &idxVect)
+    std::vector<T> & orderable, std::vector<std::size_t> const & idxVect)
 {
-    std::size_t const &nIdxs = idxVect.size();
+    std::size_t const & nIdxs = idxVect.size();
 
     std::vector<T> ordered;
     ordered.reserve(nIdxs);
 
-    for (auto const &oldIdx : idxVect)
+    for (auto const & oldIdx : idxVect)
         ordered.push_back(orderable.at(oldIdx));
 
     // Insert the new order
-    for (std::size_t i = 0; i < nIdxs; ++i)
-        orderable.at(i) = ordered.at(i);
+    for (std::size_t i = 0; i < nIdxs; ++i) orderable.at(i) = ordered.at(i);
 }
-} // namespace paddyutils
+}  // namespace paddyutils

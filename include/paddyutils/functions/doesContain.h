@@ -1,11 +1,7 @@
 #pragma once
 
-#include "base/stdPaddyUtils.h"
-
-
 namespace paddyUtils
 {
-
 /**
  * @brief Check if a set contains an value
  *
@@ -15,12 +11,11 @@ namespace paddyUtils
  * @return true
  * @return false
  */
-template<typename T>
+template <typename T>
 bool contains(std::set<T> const & theItr, T const & value)
 {
     return std::find(theItr.begin(), theItr.end(), value) != theItr.end();
 }
-
 
 /**
  * @brief Check if a list contains an value
@@ -31,12 +26,11 @@ bool contains(std::set<T> const & theItr, T const & value)
  * @return true
  * @return false
  */
-template<typename T>
+template <typename T>
 bool contains(std::list<T> const & theItr, T const & value)
 {
     return std::find(theItr.begin(), theItr.end(), value) != theItr.end();
 }
-
 
 /**
  * @brief Check if a vector contains an value
@@ -47,10 +41,10 @@ bool contains(std::list<T> const & theItr, T const & value)
  * @return true
  * @return false
  */
-template<typename T>
+template <typename T>
 bool contains(std::vector<T> const & theItr, T const & value)
 {
     return std::find(theItr.begin(), theItr.end(), value) != theItr.end();
 }
 
-}
+}  // namespace paddyUtils

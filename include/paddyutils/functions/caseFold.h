@@ -1,19 +1,19 @@
 #pragma once
 
-#include <string>
 #include <algorithm>
-
+#include <string>
 
 namespace paddyutils
 {
-
 /**
  * @brief Transform every character in a string to lower case.
  *
  * @param str
  */
 void toLowerInplace(std::string & str)
-{ std::transform(str.begin(), str.end(), str.begin(), ::tolower); }
+{
+    std::transform(str.begin(), str.end(), str.begin(), ::tolower);
+}
 
 /**
  * @brief Transfor every character in a string to lower case.
@@ -28,14 +28,15 @@ std::string toLowerCopy(std::string const & str)
     return outStr;
 }
 
-
 /**
  * @brief Transform every character in a string to upper case.
  *
  * @param str
  */
 void toUpperInplace(std::string & str)
-{ std::transform(str.begin(), str.end(), str.begin(), ::toupper); }
+{
+    std::transform(str.begin(), str.end(), str.begin(), ::toupper);
+}
 
 /**
  * @brief Transform every character in a string to upper case.
@@ -50,4 +51,4 @@ std::string toUpperCopy(std::string const & str)
     return outStr;
 }
 
-}
+}  // namespace paddyutils
