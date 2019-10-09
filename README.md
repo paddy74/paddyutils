@@ -14,10 +14,10 @@ As this is a header-only library you only need to add the `include/` folder to y
 
 ### Usage
 
-The `paddyutils.h` file includes all of this project functions and can be included like so:
+The `paddyutils.hpp` file includes all of this project functions and can be included like so:
 
 ```C++
-#include <paddyutils/paddyutils.h>
+#include <paddyutils/paddyutils.hpp>
 ```
 
 ### Available functions

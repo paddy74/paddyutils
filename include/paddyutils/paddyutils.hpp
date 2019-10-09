@@ -1,0 +1,16 @@
+#pragma once
+
+#include "functions/additiveMerge.hpp"
+#include "functions/argsort.hpp"
+#include "functions/caseFold.hpp"
+#include "functions/doesContain.hpp"
+#include "functions/findMaxValuePair.hpp"
+#include "functions/getIntersection.hpp"
+#include "functions/getMatchingItem.hpp"
+#include "functions/getRepeatMap.hpp"
+#include "functions/getSymDiff.hpp"
+#include "functions/getTimesRepeated.hpp"
+#include "functions/strSplit.hpp"
+#include "functions/strUtils.hpp"
+#include "functions/toFrequencyMap.hpp"
+#include "functions/zipPair.hpp"
