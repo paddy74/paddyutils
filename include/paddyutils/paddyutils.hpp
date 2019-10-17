@@ -13,4 +13,5 @@
 #include "functions/strSplit.hpp"
 #include "functions/strUtils.hpp"
 #include "functions/toFrequencyMap.hpp"
+#include "functions/typeUtils.hpp"
 #include "functions/zipPair.hpp"
