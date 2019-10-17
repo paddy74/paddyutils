@@ -1,7 +1,7 @@
 #pragma once
 
-namespace paddyutils {
-
+namespace paddyutils
+{
 /**
  * @brief Merge b into a (inplace). The values of matching keys are summed.
  *
@@ -11,10 +11,11 @@ namespace paddyutils {
  * @param b
  */
 template <typename KEY_T, typename VALUE_T>
-void additiveMergeInplace(std::unordered_map<KEY_T, VALUE_T> &a,
-                          std::unordered_map<KEY_T, VALUE_T> const &b) {
-  for (auto const &[key, value] : b)
-    a[key] += value;
+void additiveMergeInplace(
+    std::unordered_map<KEY_T, VALUE_T> & a,
+    std::unordered_map<KEY_T, VALUE_T> const & b)
+{
+    for (auto const & [key, value] : b) a[key] += value;
 }
 
 /**
@@ -27,12 +28,13 @@ void additiveMergeInplace(std::unordered_map<KEY_T, VALUE_T> &a,
  * @return std::unordered_map<KEY_T, VALUE_T>
  */
 template <typename KEY_T, typename VALUE_T>
-std::unordered_map<KEY_T, VALUE_T>
-additiveMerge(std::unordered_map<KEY_T, VALUE_T> a,
-              std::unordered_map<KEY_T, VALUE_T> const &b) {
-  additiveMergeInplace(a, b);
+std::unordered_map<KEY_T, VALUE_T> additiveMerge(
+    std::unordered_map<KEY_T, VALUE_T> a,
+    std::unordered_map<KEY_T, VALUE_T> const & b)
+{
+    additiveMergeInplace(a, b);
 
-  return a;
+    return a;
 }
 
-}
+}  // namespace paddyutils

@@ -7,7 +7,14 @@
 namespace paddyutils
 {
 /**
- * @brief Get the sorted old indexes of a vector.
+ * @brief Returns the indices that would sort a container low-high.
+ *
+ * @details Perform an indirect sort.
+ *      if return vect({ 1, 2, 0 })
+ *      then:
+ *          vect[1] belongs in pos 0
+ *          vect[2] belongs in pos 2
+ *          vect[0] belongs in pos 3
  *
  * @tparam T
  * @param vect
@@ -18,7 +25,7 @@ std::vector<std::size_t> argsort(std::vector<T> const & vect)
 {
     // Initialize original index locations
     std::vector<std::size_t> idxVect(vect.size());
-    std::iota(idxVect.begin(), idxVect.end(), 0);
+    std::iota(idxVect.begin(), idxVect.end(), 0);  // { 0, 1, 2, ... }
 
     // Sort indexes based on comparing values in vect
     sort(
@@ -31,7 +38,15 @@ std::vector<std::size_t> argsort(std::vector<T> const & vect)
 }
 
 /**
- * @brief Get the sorted old indexes of a vector.
+ * @brief Returns the indices that would sort a container using the given
+ *  comparator.
+ *
+ * @details Perform an indirect sort.
+ *      if return vect({ 1, 2, 0 })
+ *      then:
+ *          vect[1] belongs in pos 0
+ *          vect[2] belongs in pos 2
+ *          vect[0] belongs in pos 3
  *
  * @tparam RAIter
  * @tparam Compare
@@ -71,15 +86,39 @@ std::vector<std::size_t> argsort(
 }
 
 /**
- * @brief Reorder a vector by a vector of target indexes.
+ * @brief Returns the indices that would sort a container low-high.
+ *
+ * @details Perform an indirect sort.
+ *      if return vect({ 1, 2, 0 })
+ *      then:
+ *          vect[1] belongs in pos 0
+ *          vect[2] belongs in pos 2
+ *          vect[0] belongs in pos 3
+ *
+ * @tparam RAIter
+ * @tparam Compare
+ * @param iterBegin
+ * @param iterEnd
+ * @return std::vector<std::size_t>
+ */
+template <class RAIter>
+std::vector<std::size_t> argsort(RAIter iterBegin, RAIter iterEnd)
+{
+    auto comp = [](auto const a, auto const b) { return a < b; };
+    return argsort(iterBegin, iterEnd, comp);
+}
+
+/**
+ * @brief Order values from the input by matching index values.
  *
  * @tparam T
- * @param orderable
- * @param idxVect
+ * @param orderable Values to order.
+ * @param idxVect Indices to take along each item of the orderable.
+ * @return std::vector<T> The ordered result.
  */
 template <typename T>
-void orderByIndex(
-    std::vector<T> & orderable, std::vector<std::size_t> const & idxVect)
+std::vector<T> takeAlongAxis(
+    std::vector<T> const & orderable, std::vector<std::size_t> const & idxVect)
 {
     std::size_t const & nIdxs = idxVect.size();
 
@@ -89,7 +128,7 @@ void orderByIndex(
     for (auto const & oldIdx : idxVect)
         ordered.push_back(orderable.at(oldIdx));
 
-    // Insert the new order
-    for (std::size_t i = 0; i < nIdxs; ++i) orderable.at(i) = ordered.at(i);
+    return ordered;
 }
+
 }  // namespace paddyutils
